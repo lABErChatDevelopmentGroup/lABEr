@@ -11,7 +11,7 @@ import the_ui as tui
 
 def send(username, message, other_ip, your_ip):
     sc = sw.SWClient((other_ip, 2911))
-    sc.sendData(username + ":" + message)
+    sc.sendData(username + "~:split:~" + message)
 
 UI = tui.ChatUI(send)
 
@@ -20,7 +20,7 @@ def recive():
     ts.run(msgP, 2048)
 
 def msgP(data, hosts):
-    username, message = data.split(":")
+    username, message = data.split("~:split:~")
     UI.postMessage(username, message)
     return ""
 
