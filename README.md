@@ -40,7 +40,15 @@ In der UI kann man mehrere IPs durch ein Semikolon( ';' ) angeben
 ----
 
 ### Aussehen auf unterer Ebene
-## lABEr 1.0
-"< username >~::~< inhalt >"
+#### lABEr 0.1
+"< username >~:split:~< inhalt >"
  * username: Alias for the user
  * inhalt: Message
+
+#### lABEr 0.2 (Development) (evtl. JSON)
+"< lABEr version > ~:split:~ < ip address> ~:split:~ < username > ~:split:~ < typ > ~:split:~ < inhalt >"
+ * lABEr version: Version des Protokolls
+ * ip address: IP des Absenders
+ * username: User alias
+ * typ: Dateityp (bsp: text/plain, text/html, file/pdf, file/png)
+ * inhalt: Datei/Text
