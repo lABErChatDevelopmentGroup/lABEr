@@ -9,8 +9,9 @@ ip = sw.getMyIp()
 print("Your IP: " + ip)
 username = input("Your Username: ")
 print("--------------------------------------------------------------------------------------------")
-def printOut(msg):
-    print(msg)
+def printOut(msg, data):
+    msg = msg.split("~:split:~")
+    print(msg[0] + ": " + msg[1])
 ChatServer.startchat(printOut)
 while True:
     inp = input("")
