@@ -1,3 +1,4 @@
 #!/usr/bin/python3
-import the_network as nchat
-nchat.ChatServer.startchat()
+import networking as nchat
+import uilib
+nchat.ChatServer.startchat(uilib.ChatUI.postMessage)
