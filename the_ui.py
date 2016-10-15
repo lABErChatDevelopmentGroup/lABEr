@@ -55,10 +55,8 @@ class ChatUI:
         line = line.replace(":horse:", "♞")
         line = line.replace(":nuclear:", "☢")
         line = line.replace(":sounds:", "♫")
-        line = line.replace(":lol:", "😃")
         line = line.replace(":smile:", "☺")
-        line = line.replace(":cry:", "😢")
-        line = line.replace(":sleep:", "😴")
+        line = line.replace(":frown:", "☹")
         return line
 
     def show(self):
