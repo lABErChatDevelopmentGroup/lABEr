@@ -1,3 +1,4 @@
+#coding: utf-8
 """
 lABEr
 =====
@@ -14,6 +15,7 @@ class ChatUI:
         "Initializes the ChatUI"
         self._tk = Tk()
         self._tk.title("lABEr")
+        self._tk.resizable(width=0, height=0)
         self.outputArea = Text(self._tk, width="86", height="20", state="disabled", font=("Calibri",13))
         self._addLine("++++++ lABEr-Char ++++++")
         self.outputArea.place(x=0, y=0)
@@ -29,8 +31,8 @@ class ChatUI:
         self.otherIP.place(x=380, y=466)
         yourIP = sw.getMyIp()
         if yourIP == "127.0.0.1":
-            self._addLine("Du befindest dich zur Zeit entweder nicht im Netzwerk oder nutzt Linux")
-            self._addLine("Dadurch ist es leider nicht möglich den lABEr-Chat zu nutzen.")
+            self._addLine("Du befindest dich zur Zeit entweder nicht im Netzwerk oder nutzt ein nicht kompatibles Linux")
+            self._addLine("Dadurch ist es leider nicht moeglich den lABEr-Chat zu nutzen.")
             self.sendenButton['state'] = "disabled"
         else:
             self._addLine("Deine IP ist: " + yourIP)
@@ -46,7 +48,7 @@ class ChatUI:
         self.outputArea['state'] = "normal"
         self.outputArea.insert('end', line + "\n")
         self.outputArea['state'] = "disabled"
-        
+
     def _emoticonReplace(self, line):
         line = line.replace(":star:", "★")
         line = line.replace(":yes:", "✓")
@@ -70,7 +72,17 @@ class ChatUI:
         self.userName['state'] = "disabled"
         self.cbfunc(self.userName.get(), self.inputArea.get(), [i.strip() for i in list(self.otherIP.get().split(";"))], self.yourIP)
         self.inputArea.delete(0, END)
-        
+
+    def getuser(self):
+        return self.userName()
+
+    def gettext(self):
+        return inputArea.get()
+
+    def getotherips(self):
+        return [i.strip() for i in list(self.otherIP.get().split(";"))]
+
+
 """
 DOCS:
 =====
