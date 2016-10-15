@@ -3,3 +3,6 @@ From: <username>
 Type: message
 
 <inhalt>
+
+----------
+lAABEr/1.0 on <ip> #An Brodcast addresse senden
