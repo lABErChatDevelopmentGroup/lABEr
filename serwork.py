@@ -5,7 +5,7 @@ def getMyName():
     return socket.gethostname()
 def getMyIp():
     "Returns your local Ip"
-    return name2Ip(socket.gethostname())
+    return name2Ip(socket.getfqdn())
 
 def name2Ip(name):
     "Converts Hostname to Ip"
