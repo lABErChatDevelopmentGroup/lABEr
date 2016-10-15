@@ -36,6 +36,9 @@ In der UI kann man mehrere IPs durch ein Semikolon( ';' ) angeben
   * message: Nachricht (string)
   * other_ip: Empfänger IPs als Array
   * your_ip: eigene IP (Kann man mit sw.getMyIp() bekommen
+  
+ * ChatServer.stopchat()
+  * Stop Chat Server
 
 ----
 
