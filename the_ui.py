@@ -41,9 +41,25 @@ class ChatUI:
 
     def _addLine(self, line):
         "Adds a line to the outputArea"
+        line = self._emoticonReplace(line)
         self.outputArea['state'] = "normal"
         self.outputArea.insert('end', line + "\n")
         self.outputArea['state'] = "disabled"
+        
+    def _emoticonReplace(self, line):
+        line = line.replace(":star:", "★")
+        line = line.replace(":yes:", "✓")
+        line = line.replace(":sun:", "☀")
+        line = line.replace(":snow:", "❄")
+        line = line.replace(":love:", "❤")
+        line = line.replace(":horse:", "♞")
+        line = line.replace(":nuclear:", "☢")
+        line = line.replace(":sounds:", "♫")
+        line = line.replace(":lol:", "😃")
+        line = line.replace(":smile:", "☺")
+        line = line.replace(":cry:", "😢")
+        line = line.replace(":sleep:", "😴")
+        return line
 
     def show(self):
         "Shows the ChatWindow"
@@ -54,7 +70,7 @@ class ChatUI:
         self._addLine(self.userName.get() + ": " + self.inputArea.get())
         self.userName['state'] = "disabled"
         self.otherIP['state'] = "disabled"
-        self.cbfunc(self.userName.get(), self.inputArea.get(), self.otherIP.get(), self.yourIP)
+        self.cbfunc(self.userName.get(), self.inputArea.get(), [i.strip() for i in list(self.otherIP.get().split(";"))], self.yourIP)
         self.inputArea.delete(0, END)
         
 """
