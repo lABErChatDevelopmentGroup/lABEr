@@ -35,21 +35,21 @@ class ChatUI:
             self._addLine("Deine IP ist: " + yourIP)
             self.cbfunc = cbfunc
             self.yourIP = yourIP
-            
+
     def postMessage(self, usr, msg):
         self._addLine(usr + ": " + msg)
-        
+
     def _addLine(self, line):
         "Adds a line to the outputArea"
         self.outputArea['state'] = "normal"
         self.outputArea.insert('end', line + "\n")
         self.outputArea['state'] = "disabled"
-    
+
     def show(self):
         "Shows the ChatWindow"
         self._tk.geometry("693x500")
         self._tk.mainloop()
-        
+
     def _sendData(self):
         self._addLine(self.userName.get() + ": " + self.inputArea.get())
         self.userName['state'] = "disabled"
@@ -57,8 +57,6 @@ class ChatUI:
         self.cbfunc(self.userName.get(), self.inputArea.get(), self.otherIP.get(), self.yourIP)
         self.inputArea.delete(0, END)
         
-def null(*a)
-ChatUI(null).show()
 """
 DOCS:
 =====

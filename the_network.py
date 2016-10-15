@@ -7,20 +7,21 @@ import threading
 from time import sleep
 import serwork as sw
 
-def send(server_ip):
-    sleep(0.2)
-    while True:
-        sc = sw.SWClient((server_ip, 2911))
-        sc.sendData(input("Nachricht: "))
+import the_ui as tui
+
+def send(username, message, other_ip, your_ip):
+    sc = sw.SWClient((other_ip, 2911))
+    sc.sendData(username + ":" + message)
+
+UI = tui.ChatUI(send)
 
 def recive():
-    ip = sw.getMyIp()
-    print("launching server on " + ip)
-    ts = sw.SWServer((ip, 2911))
-    ts.run(msgP, 1024)
+    ts = sw.SWServer(("", 2911))
+    ts.run(msgP, 2048)
 
 def msgP(data, hosts):
-    print(data)
+    username, message = data.split(":")
+    UI.postMessage(username, message)
     return ""
 
 from serwork import *
@@ -30,9 +31,9 @@ class ChatServer:
     def __init(self):
         pass
 
-    def startchat(server_ip):
+    def startchat():
         recive_t = threading.Thread(None, recive)
-        send_t = threading.Thread(None, send, None, (server_ip,))
 
         recive_t.start()
-        send_t.start()
+
+        UI.show()
