@@ -4,9 +4,11 @@ lABEr
 The ChatServer for lABEr.
 """
 import threading
+from time import sleep
 import serwork as sw
 
 def send(server_ip):
+    sleep(0.2)
     while True:
         sc = sw.SWClient((server_ip, 2911))
         sc.sendData(input("Nachricht: "))
