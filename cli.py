@@ -12,6 +12,7 @@ print("-------------------------------------------------------------------------
 def printOut(msg, data):
     msg = msg.split("~:split:~")
     print(msg[0] + ": " + msg[1])
+    return ""
 ChatServer.startchat(printOut)
 while True:
     inp = input("")
