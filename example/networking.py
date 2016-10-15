@@ -27,13 +27,13 @@ class ChatServer:
         self.recive_t.start()
 
     #Send a message
-    def send(self, username, message, other_ip, your_ip):
+    def sendmsg(self, username, message, other_ip, your_ip):
         for i in other_ip:
             if i in ['127.0.0.1', your_ip]: #Do not allow sending messages to lo
                 continue
             sc = sw.SWClient((i, 2911))
             sc.sendData(username + "~:split:~" + message)
-            
+
     def stopchat(self):
         if ts != None:
             try:

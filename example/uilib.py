@@ -37,7 +37,7 @@ class ChatUI:
             self.sendenButton['state'] = "disabled"
         else:
             self._addLine("Deine IP ist: " + yourIP)
-            self.cbfunc = chatserver.send
+            self.cbfunc = chatserver.sendmsg
             self.qfunc = chatserver.stopchat
             self.yourIP = yourIP
 
@@ -83,7 +83,7 @@ class ChatUI:
 
     def getotherips(self):
         return [i.strip() for i in list(self.otherIP.get().split(";"))]
-    
+
     def _onQuit(self):
         self._tk.destroy()
         self.qfunc()

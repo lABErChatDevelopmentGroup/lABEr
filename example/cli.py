@@ -19,4 +19,4 @@ CS = ChatServer()
 CS.startchat(printOut)
 while True:
     inp = input()
-    CS.send(username, inp, other_ips, ip)
+    CS.sendmsg(username, inp, other_ips, ip)
