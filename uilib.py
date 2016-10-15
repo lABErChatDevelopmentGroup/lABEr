@@ -7,7 +7,6 @@ The User-Interface for lABEr.
 
 from tkinter import *
 import serwork as sw
-import sys
 
 class ChatUI:
     "The User-Interface for lABEr"
