@@ -12,3 +12,7 @@ Requirements:
 Starten:
 
  * python3 ui.py
+
+---
+# Tipps:
+In der UI kann man mehrere IPs durch ein Semikolon( ';' ) angeben
