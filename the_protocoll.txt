@@ -1,0 +1,5 @@
+lABEr/1.0
+From: <username>
+Type: message
+
+<inhalt>
