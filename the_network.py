@@ -11,6 +11,8 @@ import the_ui as tui
 
 def send(username, message, other_ip, your_ip):
     for i in other_ip:
+        if i in ['127.0.0.1', your_ip]:
+            continue
         sc = sw.SWClient((i, 2911))
         sc.sendData(username + "~:split:~" + message)
 
