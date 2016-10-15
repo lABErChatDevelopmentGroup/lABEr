@@ -7,15 +7,17 @@ The User-Interface for lABEr.
 
 from tkinter import *
 import serwork as sw
+import networking as nt
 
 class ChatUI:
     "The User-Interface for lABEr"
-    def __init__(self, cbfunc):
+    def __init__(self, chatserver):
         "Initializes the ChatUI"
         self._tk = Tk()
         self._tk.title("lABEr")
         self._tk.resizable(width=0, height=0)
-        self.outputArea = Text(self._tk, width="86", height="20", state="disabled", font=("Calibri",13))
+        self._tk.protocol('WM_DELETE_WINDOW', self._onQuit)
+        self.outputArea = Text(self._tk, width="76", height="20", state="disabled", font=("Calibri",13))
         self._addLine("++++++ lABEr-Char ++++++")
         self.outputArea.place(x=0, y=0)
         self.inputArea = Entry(self._tk, width="85", font=("Calibri",12))
@@ -35,7 +37,8 @@ class ChatUI:
             self.sendenButton['state'] = "disabled"
         else:
             self._addLine("Deine IP ist: " + yourIP)
-            self.cbfunc = cbfunc
+            self.cbfunc = chatserver.send
+            self.qfunc = chatserver.stopchat
             self.yourIP = yourIP
 
     def postMessage(self, usr, msg):
@@ -63,7 +66,7 @@ class ChatUI:
 
     def show(self):
         "Shows the ChatWindow"
-        self._tk.geometry("693x500")
+        self._tk.geometry("713x500")
         self._tk.mainloop()
 
     def _sendData(self):
@@ -80,6 +83,11 @@ class ChatUI:
 
     def getotherips(self):
         return [i.strip() for i in list(self.otherIP.get().split(";"))]
+    
+    def _onQuit(self):
+        self._tk.destroy()
+        self.qfunc()
+        exit()
 
 
 """

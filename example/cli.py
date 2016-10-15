@@ -15,7 +15,8 @@ print("Your IP: " + ip)
 username = input("Your Username: ")
 print("--------------------------------------------------------------------------------------------")
 
-ChatServer.startchat(printOut)
+CS = ChatServer()
+CS.startchat(printOut)
 while True:
     inp = input()
-    ChatServer.send(username, inp, other_ips, ip)
+    CS.send(username, inp, other_ips, ip)

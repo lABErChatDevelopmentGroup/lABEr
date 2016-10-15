@@ -3,14 +3,15 @@ from networking import ChatServer
 import serwork as sw
 import uilib
 
-ui = uilib.ChatUI(ChatServer.send)
+CS = ChatServer()
+ui = uilib.ChatUI(CS)
 
 def postMsg(msg, data):
     data = msg.split("~:split:~")
     ui.postMessage(data[0], data[1])
     return ""
 
-ChatServer.startchat(postMsg)
+CS.startchat(postMsg)
 ui.show()
 
 #nchat.ChatServer.send(uilib.ChatUI().getuser(), uilib.ChatUI().gettext(), uilib.ChatUI().getotherips(), sw.getMyIP

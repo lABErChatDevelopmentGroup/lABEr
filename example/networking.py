@@ -7,10 +7,12 @@ import threading
 from time import sleep
 import serwork as sw
 import uilib as tui
-from serwork import *
+import socket
 
 #Recive messages
+ts = None
 def recive(recive_fp):
+    global ts
     ts = sw.SWServer(("", 2911))
     ts.run(recive_fp, 2048)
 
@@ -19,15 +21,24 @@ class ChatServer:
     def __init(self):
         pass
 
-    def startchat(recive_fp):
+    def startchat(self, recive_fp):
         #Start reciving thread
-        recive_t = threading.Thread(None, recive, None, (recive_fp,))
-        recive_t.start()
+        self.recive_t = threading.Thread(None, recive, None, (recive_fp,))
+        self.recive_t.start()
 
     #Send a message
-    def send(username, message, other_ip, your_ip):
+    def send(self, username, message, other_ip, your_ip):
         for i in other_ip:
             if i in ['127.0.0.1', your_ip]: #Do not allow sending messages to lo
                 continue
             sc = sw.SWClient((i, 2911))
             sc.sendData(username + "~:split:~" + message)
+            
+    def stopchat(self):
+        if ts != None:
+            try:
+                ts.socket.shutdown(socket.SHUT_RDWR)
+            except:
+                pass
+            finally:
+                ts.socket.close()
