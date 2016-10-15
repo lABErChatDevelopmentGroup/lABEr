@@ -52,9 +52,8 @@ class SWClient:
 
     def sendData(self, string, length=2048):
         self.socket.connect(self.server)
-        server, addr = self.socket.accept()
-        server.send(string2bytes)
-        data = server.recv(length)
+        self.socket.sendall(string2bytes(string))
+        data = self.socket.recv(length)
         return bytes2string(data)
 
     def getData(self, length=2048):
@@ -64,7 +63,7 @@ class SWClient:
 
     def __del__(self):
         self.socket.close()
-        
+
 class SWServer:
     "UDP-Server"
     def __init__(self, server):
@@ -90,4 +89,3 @@ class SWServer:
 
     def stop(self):
         self.running = False
-            
