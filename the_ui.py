@@ -57,7 +57,8 @@ class ChatUI:
         self.cbfunc(self.userName.get(), self.inputArea.get(), self.otherIP.get(), self.yourIP)
         self.inputArea.delete(0, END)
         
-ChatUI(lambda: None).show()
+def null(*a)
+ChatUI(null).show()
 """
 DOCS:
 =====
