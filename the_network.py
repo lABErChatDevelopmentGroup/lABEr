@@ -7,8 +7,9 @@ import threading
 import serwork as sw
 
 def send(server_ip):
-    sc = sw.SWClient((server_ip, 2911))
-    sc.sendData(input("Nachricht: "))
+    while True:
+        sc = sw.SWClient((server_ip, 2911))
+        sc.sendData(input("Nachricht: "))
 
 def recive():
     ip = sw.getMyIp()
