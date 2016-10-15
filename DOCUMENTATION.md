@@ -24,3 +24,10 @@
   * message: Nachricht (string)
   * other_ip: Empfänger IPs als Array
   * your_ip: eigene IP (Kann man mit sw.getMyIp() bekommen
+----
+
+### Textübertragung
+## lABEr 1.0
+"< username >~::~< inhalt >"
+ * username: Alias for the user
+ * inhalt: Message
