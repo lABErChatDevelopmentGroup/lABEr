@@ -69,7 +69,6 @@ class ChatUI:
     def _sendData(self):
         self._addLine(self.userName.get() + ": " + self.inputArea.get())
         self.userName['state'] = "disabled"
-        self.otherIP['state'] = "disabled"
         self.cbfunc(self.userName.get(), self.inputArea.get(), [i.strip() for i in list(self.otherIP.get().split(";"))], self.yourIP)
         self.inputArea.delete(0, END)
         
