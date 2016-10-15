@@ -6,7 +6,7 @@ The ChatServer for lABEr.
 import threading
 from time import sleep
 import serwork as sw
-import the_ui as tui
+import uilib as tui
 from serwork import *
 
 #Recive messages
@@ -14,20 +14,14 @@ def recive(recive_fp):
     ts = sw.SWServer(("", 2911))
     ts.run(recive_fp, 2048)
 
-#Split message
-def msgS(data, hosts):
-    username, message = data.split("~:split:~")
-    UI.postMessage(username, message)
-    return ""
-
+#The char server for lABEr
 class ChatServer:
-    "The ChatServer for lABEr"
     def __init(self):
         pass
 
     def startchat(recive_fp):
         #Start reciving thread
-        recive_t = threading.Thread(None, recive, (recive_fp))
+        recive_t = threading.Thread(None, recive, None, (recive_fp,))
         recive_t.start()
 
     #Send a message
