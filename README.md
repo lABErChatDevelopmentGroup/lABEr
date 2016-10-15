@@ -15,4 +15,4 @@ Starten:
 
 ---
 # Tipps:
-In der UI kann man mehrere IPs durch ein Semikolon( ';' ) angeben
+In der UI kann man mehrere IPs durch ein Semikolon( ';' ) getrennt angeben
