@@ -7,7 +7,7 @@ import threading
 from time import sleep
 import serwork as sw
 import uilib as tui
-import socket
+import socket, json
 
 #Recive messages
 ts = None
@@ -32,7 +32,13 @@ class ChatServer:
             if i in ['127.0.0.1', your_ip]: #Do not allow sending messages to lo
                 continue
             sc = sw.SWClient((i, 2911))
-            sc.sendData(username + "~:split:~" + message)
+            data = {
+                'username': username,
+                'ip': your_ip,
+                'type': 'message',
+                'value': message
+            }
+            sc.sendData(json.dumps(data))
 
     def stopchat(self):
         if ts != None:

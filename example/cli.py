@@ -1,11 +1,14 @@
 #Command-line-interface for lABEr
 from networking import ChatServer
 import serwork as sw
-import sys
+import sys, json
 
 def printOut(msg, data):
-    msg = msg.split("~:split:~")
-    print(msg[0] + ": " + msg[1])
+    msg = json.loads(msg)
+    if msg['type'] == 'message':
+        print(msg['username'] + ": " + msg['value'])
+    else:
+        print("Cannot find command " + msg['type'])
     return ""
 
 other_ips = sys.argv[1:]

@@ -1,14 +1,17 @@
 #!/usr/bin/python3
 from networking import ChatServer
 import serwork as sw
-import uilib
+import uilib, json
 
 CS = ChatServer()
 ui = uilib.ChatUI(CS)
 
 def postMsg(msg, data):
-    data = msg.split("~:split:~")
-    ui.postMessage(data[0], data[1])
+    msg = json.loads(msg)
+    if msg['type'] == 'message':
+        ui.postMessage(msg['username'],msg['value'])
+    else:
+        ui.postMessage("System", "Cannot find command " + msg['type'])
     return ""
 
 CS.startchat(postMsg)
