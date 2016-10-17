@@ -35,6 +35,7 @@ class ChatUI:
             self._addLine("Du befindest dich zur Zeit entweder nicht im Netzwerk oder nutzt ein nicht kompatibles Linux")
             self._addLine("Dadurch ist es leider nicht moeglich den lABEr-Chat zu nutzen.")
             self.sendenButton['state'] = "disabled"
+            self.qfunc = chatserver.stopchat
         else:
             self._addLine("Deine IP ist: " + yourIP)
             self.cbfunc = chatserver.sendmsg
@@ -44,9 +45,10 @@ class ChatUI:
     def postMessage(self, usr, msg):
         self._addLine(usr + ": " + msg)
 
-    def _addLine(self, line):
+    def _addLine(self, line, em=True):
         "Adds a line to the outputArea"
-        line = self._emoticonReplace(line)
+        if em:
+            line = self._emoticonReplace(line)
         self.outputArea['state'] = "normal"
         self.outputArea.insert('end', line + "\n")
         self.outputArea['state'] = "disabled"
