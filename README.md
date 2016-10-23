@@ -27,6 +27,7 @@ In der UI kann man mehrere IPs durch ein Semikolon( ';' ) getrennt angeben.
 `ChatServer.startchat(fp)`
   * Empfängt alle Nachrichten und gibt diese an Funktion `fp` weiter
   * Bekommt empfangene Nachrichten als String
+  * Anmerkung: fp muss einen leeren String zurückgeben
 
 
 `ChatServer.send(username, message, other_ip, your_ip)`
