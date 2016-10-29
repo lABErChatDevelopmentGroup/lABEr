@@ -1,1 +1,0 @@
-python PyInstaller-3.2\pyinstaller.py -Fw ui.py
