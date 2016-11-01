@@ -55,7 +55,6 @@ class ChatUI:
 
     def _emoticonReplace(self, line):
         line = line.replace(":star:", "★")
-        line = line.replace(":yes:", "✓")
         line = line.replace(":sun:", "☀")
         line = line.replace(":snow:", "❄")
         line = line.replace(":love:", "❤")
@@ -64,6 +63,9 @@ class ChatUI:
         line = line.replace(":sounds:", "♫")
         line = line.replace(":smile:", "☺")
         line = line.replace(":frown:", "☹")
+        line = line.replace(":no:", "⛔")
+        line = line.replace(":yes:", "✔")
+        line = line.replace(":sparkle:", "✨")
         return line
 
     def show(self):
